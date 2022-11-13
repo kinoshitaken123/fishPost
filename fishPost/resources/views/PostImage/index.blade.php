@@ -1,8 +1,21 @@
-@extends('layouts.app')
+<!-- cssの呼び出し -->
+<!DOCUMENT html>
+  @extends('layouts.app')
 
-@section('contents')
-<h1>商品一覧・投稿</h1>
-{{-- 画像投稿 --}}
-@include('parts.post')
+  @section('contents')
+  <h1>料理投稿</h1>
+  {{-- 画像投稿 --}}
+  @include('parts.post')
 
-@endsection
+  <h1>商品一覧</h1>
+  @forelse ($post_data as $value)
+  <div class="card" style="width: 18rem; display: inline-block;">
+    <img src="{{ Storage::url($value->image_path) }}" class="col-auto" style="width:100%;" />
+    <p class="col-auto">{{$value->product_name}}</p>
+    <p class="col-auto">{{$value->cooking_explanation}}</p>
+  </div>
+  @empty
+{{ config('const.index.NO_DISPLAY') }} 
+  @endforelse
+
+  @endsection

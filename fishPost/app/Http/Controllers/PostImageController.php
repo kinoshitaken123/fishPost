@@ -14,7 +14,9 @@ class PostImageController extends Controller
      */
     public function index()
     {
-        return view('PostImage/index');
+        $post_data = CookingPost::all();
+
+        return view('PostImage.index', compact('post_data'));
     }
 
     /**
