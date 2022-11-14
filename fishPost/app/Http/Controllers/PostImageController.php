@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class PostImageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 投稿一覧
      *
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function index()
     {
@@ -20,20 +20,10 @@ class PostImageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * 投稿
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param 
+     * @return void
      */
     public function store(Request $request)
     {
@@ -52,10 +42,10 @@ class PostImageController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     *投稿詳細
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int 
+     * @return
      */
     public function show($id)
     {
@@ -63,10 +53,10 @@ class PostImageController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     *投稿編集
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int 
+     * @return 
      */
     public function edit($id)
     {
@@ -74,11 +64,11 @@ class PostImageController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 投稿更新
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param
+     * @param  int
+     * @return 
      */
     public function update(Request $request, $id)
     {
@@ -86,10 +76,10 @@ class PostImageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 投稿削除
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int
+     * @return
      */
     public function destroy($id)
     {
