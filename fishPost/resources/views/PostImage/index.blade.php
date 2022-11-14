@@ -1,5 +1,3 @@
-<!-- cssの呼び出し -->
-<!DOCUMENT html>
   @extends('layouts.app')
 
   @section('contents')
