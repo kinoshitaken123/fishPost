@@ -44,19 +44,20 @@ class PostImageController extends Controller
     /**
      *投稿詳細
      *
-     * @param  int 
-     * @return
+     * @param int $id
+     * @return void
      */
     public function show($id)
     {
-        //
+        $post_data = CookingPost::where('id', $id)->first();
+        return view('PostImage.show', compact('post_data'));
     }
 
     /**
      *投稿編集
      *
      * @param  int 
-     * @return 
+     * @return void
      */
     public function edit($id)
     {
