@@ -10,8 +10,8 @@
   <div class="card" style="width: 18rem; display: inline-block;">
     <img src="{{ Storage::url($value->image_path) }}" class="col-auto" style="width:100%;" />
     <a href="{{ route('posts.show', $value->id) }}">詳細</a>
-    <p class=" col-auto">{{$value->product_name}}</p>
-    <p class="col-auto">{{$value->cooking_explanation}}</p>
+    <p class=" col-auto">{{ $value->product_name }}</p>
+    <p class="col-auto">{{ $value->cooking_explanation }}</p>
   </div>
   @empty
   {{ config('const.index.NO_DISPLAY') }}
