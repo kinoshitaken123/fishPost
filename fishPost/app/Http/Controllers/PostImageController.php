@@ -61,7 +61,8 @@ class PostImageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post_data = CookingPost::where('id', $id)->first();
+        return view('PostImage.show', compact('post_data'));
     }
 
     /**
