@@ -62,7 +62,7 @@ class PostImageController extends Controller
     public function edit($id)
     {
         $post_data = CookingPost::where('id', $id)->first();
-        return view('PostImage.show', compact('post_data'));
+        return view('PostImage.edit', compact('post_data'));
     }
 
     /**
@@ -72,9 +72,26 @@ class PostImageController extends Controller
      * @param  int
      * @return 
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, CookingPost $cookingPost)
     {
-        //
+        $post_data = CookingPost::where('id', $id)->first();
+        // // アップロードされたファイル名を取得
+        $upload_image = $request->file('image_path');
+        // // storageへの保存
+        $path = $post_data->image_path;
+        if (!is_null($path)) {
+            // 現在の画像ファイルの削除
+            \Storage::disk('public')->delete($path);
+            $path = $upload_image->store('uploads', 'public');
+        }
+
+        $post_data->update([
+            "product_name" => $request->product_name,
+            "cooking_explanation" => $request->cooking_explanation,
+            "image_path" => $path,
+        ]);
+
+        return redirect()->route('posts.index', compact('post_data'));
     }
 
     /**
