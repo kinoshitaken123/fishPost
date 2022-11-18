@@ -5,7 +5,7 @@
   {{-- 画像投稿 --}}
   @include('parts.post')
 
-  <h1>商品一覧</h1>
+  <h1>料理一覧</h1>
   @forelse ($post_data as $value)
   <div class="card" style="width: 18rem; display: inline-block;">
     <img src="{{ Storage::url($value->image_path) }}" class="col-auto" style="width:100%;" />
