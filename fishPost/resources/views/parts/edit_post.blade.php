@@ -1,5 +1,6 @@
-<form method="put" action="{{ route('posts.update', $post_data) }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('posts.update', $post_data) }}" enctype="multipart/form-data">
   @csrf
+  @method('patch')
   <div class="col-md-7">
     <label class="form-label">料理名</label>
     <input type="text" value="{{ $post_data->product_name }}" name="product_name" class="form-control">
@@ -17,5 +18,6 @@
     <input type="file" class="form-control" name="image_path" aria-label="Upload">
   </div>
   <a href="{{ route('posts.index') }}" class="btn btn-primary">一覧に戻る</a>
-  <a href="{{ route('posts.update', $post_data) }}" class="btn btn-success">更新</a>
+  <input type="submit" value="更新" class="btn btn-success">
+  <!-- <a href="{{ route('posts.update', $post_data) }}" class="btn btn-success">更新</a> -->
 </form>
