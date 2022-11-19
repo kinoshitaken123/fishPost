@@ -15,5 +15,17 @@
     </tr>
   </tbody>
 </table>
-
+<div class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <form action="{{ route('posts.destroy', $post_data) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger">削除</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
