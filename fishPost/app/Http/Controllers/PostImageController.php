@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostImageController extends Controller
 {
+    public function __construct(CookingPost $cooking_post)
+    {
+        $this->CookingPost = $cooking_post;
+    }
+    
     /**
      * 投稿一覧
      *
@@ -14,9 +19,9 @@ class PostImageController extends Controller
      */
     public function index()
     {
-        $post_data = CookingPost::all();
+        $cooking_post_list = $this->CookingPost->fetchCookingPostList();
 
-        return view('PostImage.index', compact('post_data'));
+        return view('PostImage.index', compact('cooking_post_list'));
     }
 
     /**
@@ -49,7 +54,7 @@ class PostImageController extends Controller
      */
     public function show($id)
     {
-        $post_data = CookingPost::where('id', $id)->first();
+        $post_data = $this->CookingPost->fetchIdAssociateInPosts($id);
         return view('PostImage.show', compact('post_data'));
     }
 
@@ -61,7 +66,7 @@ class PostImageController extends Controller
      */
     public function edit($id)
     {
-        $post_data = CookingPost::where('id', $id)->first();
+        $post_data = $this->CookingPost->fetchIdAssociateInPosts($id);
         return view('PostImage.edit', compact('post_data'));
     }
 
@@ -73,7 +78,7 @@ class PostImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post_data = CookingPost::where('id', $id)->first();
+        $post_data = $this->CookingPost->fetchIdAssociateInPosts($id);
         // // アップロードされたファイル名を取得
         $upload_image = $request->file('image_path');
         // // storageへの保存
@@ -99,7 +104,7 @@ class PostImageController extends Controller
      * @param  int $id
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id, CookingPost $cookingPost)
     {
         $post_data = CookingPost::find($id);
 
