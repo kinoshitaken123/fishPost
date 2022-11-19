@@ -10,7 +10,7 @@ class PostImageController extends Controller
     /**
      * 投稿一覧
      *
-     * @return
+     * @return void
      */
     public function index()
     {
@@ -56,7 +56,7 @@ class PostImageController extends Controller
     /**
      *投稿編集
      *
-     * @param  int 
+     * @param  int $id
      * @return void
      */
     public function edit($id)
@@ -68,11 +68,10 @@ class PostImageController extends Controller
     /**
      * 投稿更新
      *
-     * @param
-     * @param  int
-     * @return 
+     * @param  int $id
+     * @return void
      */
-    public function update(Request $request, $id, CookingPost $cookingPost)
+    public function update(Request $request, $id)
     {
         $post_data = CookingPost::where('id', $id)->first();
         // // アップロードされたファイル名を取得
@@ -97,11 +96,15 @@ class PostImageController extends Controller
     /**
      * 投稿削除
      *
-     * @param  int
-     * @return
+     * @param  int $id
+     * @return void
      */
     public function destroy($id)
     {
-        //
+        $post_data = CookingPost::find($id);
+
+        $post_data->delete();
+
+        return redirect()->route('posts.index');
     }
 }
