@@ -10,6 +10,7 @@
         <p>料理名:"{{ $post_data->product_name }}"</p>
         <p>説明:"{{ $post_data->cooking_explanation }}"</p>
         <a href="{{ route('posts.index') }}" class="btn btn-primary">一覧に戻る</a>
+        <a href="{{ route('posts.edit', $post_data) }}" class="btn btn-success">編集</a>
       </div>
     </tr>
   </tbody>
