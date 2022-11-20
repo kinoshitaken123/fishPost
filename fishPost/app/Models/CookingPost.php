@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use App\Models\Comment;
 
 class CookingPost extends Model
 {
@@ -15,6 +16,11 @@ class CookingPost extends Model
         'cooking_explanation',
         'image_path',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
     /**
      * 投稿料理全権取得
