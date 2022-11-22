@@ -27,5 +27,17 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="row actions" id="comment-form-post-{{ $post_data->id }}">
+      <form class="w-100" id="new_comment" action="/posts/{comment_id}/comments" accept-charset="UTF-8" data-remote="true" method="post">
+          <input name="utf8" type="hidden" value="&#x2713;" />
+          {{csrf_field()}}
+          <input value="{{ Auth::user() }}" type="hidden" name="user_id" />
+          <input value="{{ $post_data->post_id }}" type="hidden" name="post_id" />
+          <input class="form-control comment-input" placeholder="コメント ..." autocomplete="off" type="text" name="comment" />
+          <button type="submit" class="btn btn-success">投稿</button>
+      </form>
+    </div>
+  </div>
 </div>
 @endsection
