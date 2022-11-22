@@ -104,7 +104,7 @@ class PostImageController extends Controller
      * @param  int $id
      * @return void
      */
-    public function destroy($id, CookingPost $cookingPost)
+    public function destroy($id)
     {
         $post_data = CookingPost::find($id);
 
