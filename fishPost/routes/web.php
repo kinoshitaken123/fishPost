@@ -28,3 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('posts', 'App\Http\Controllers\PostImageController')
     ->except(['create']);
+
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
