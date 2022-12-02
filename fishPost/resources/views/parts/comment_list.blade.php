@@ -1,3 +1,3 @@
-@foreach ($post_comment as $value)
-  {{ $value->comment }}
+@foreach ($post_data as $value)
+  {{ ($value) }}
 @endforeach

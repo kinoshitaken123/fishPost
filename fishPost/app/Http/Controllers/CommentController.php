@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\CookingPost;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -13,15 +14,16 @@ class CommentController extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        $post_data = new Comment;
-        $post_data->comment = $request->comment;
-        dd($post_data);
-        $post_data->post_id = $request->post_id;
-        $post_data->user_id = Auth::user()->id;
-        $post_data->save();
-
-        return redirect()->route('posts.index', compact('comment_post'));
+        $post_comment = new Comment;
+        $post_comment->comment = $request->comment;
+        // $post_data = $request;
+        $post_comment->post_id = $request->post_id;
+        // $user = Auth::user();
+        // dd($user);
+        // dd($post_data);
+        $post_comment->save();
+        return view('PostImage.show', compact('post_comment'));
     }
 }

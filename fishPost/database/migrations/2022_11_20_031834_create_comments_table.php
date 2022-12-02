@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('comment', 255);
-            $table->integer('post_id');
-            $table->integer('user_id');
-            $table->timestamp('created_at')->nullable(false);
+            $table->unsignedInteger('post_id');
+            // $table->unsignedInteger('user_id');
+            $table->timestamps();
         });
     }
 
