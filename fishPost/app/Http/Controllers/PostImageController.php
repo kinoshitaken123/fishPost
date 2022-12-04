@@ -17,11 +17,18 @@ class PostImageController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
         $cooking_post_list = $this->CookingPost->fetchCookingPostList();
 
-        return view('PostImage.index', compact('cooking_post_list'));
+        $key = $request->input('search');
+        $query = CookingPost::query();
+        if (!empty($key)) {
+            $query->where('product_name', 'like', '%' . $key . '%')
+            ->orWhere('cooking_explanation', 'like', '%' . $key . '%');
+        } 
+        $post_data = $query->orderBy('created_at', 'desc')->paginate(10);
+        return view('PostImage.index', compact('post_data'));
     }
 
     /**
