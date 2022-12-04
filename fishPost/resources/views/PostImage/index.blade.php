@@ -6,7 +6,7 @@
   @include('parts.post')
 
   <h1>料理一覧</h1>
-  @forelse ($cooking_post_list as $value)
+  @forelse ($post_data as $value)
   <div class="card" style="width: 18rem; display: inline-block;">
     <img src="{{ Storage::url($value->image_path) }}" class="col-auto" style="width:100%;" />
     <a href="{{ route('posts.show', $value->id) }}">詳細</a>
