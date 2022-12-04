@@ -20,4 +20,16 @@ class Comment extends Model
     {
         return $this->belongsTo(CookingPost::class);
     }
+
+    /**
+     * コメントに紐づくid取得
+     *
+     * @param Collection
+     * @return collection  $cooking_post_list
+     */
+    public function fetchCommentList() 
+    {
+        $comment_list = $this->all();
+        return $comment_list;
+    }
 }
