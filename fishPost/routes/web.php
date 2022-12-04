@@ -29,5 +29,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('posts', 'App\Http\Controllers\PostImageController')
     ->except(['create']);
 
-//コメント機能
-Route::post('posts/{comment_id}/comments','App\Http\Controllers\CommentController@store');
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search.index');
+
