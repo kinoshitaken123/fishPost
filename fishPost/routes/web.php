@@ -30,3 +30,4 @@ Route::resource('posts', 'App\Http\Controllers\PostImageController')
     ->except(['create']);
 
 Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search.index');
+

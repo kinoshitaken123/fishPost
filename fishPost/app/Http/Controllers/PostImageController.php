@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\CookingPost;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class PostImageController extends Controller
 {
-    public function __construct(CookingPost $cooking_post)
+    public function __construct(CookingPost $cooking_post, Comment $commnet)
     {
         $this->CookingPost = $cooking_post;
+        $this->Comment = $commnet;
     }
     
     /**
@@ -62,7 +64,9 @@ class PostImageController extends Controller
     public function show($id)
     {
         $post_data = $this->CookingPost->fetchIdAssociateInPosts($id);
-        return view('PostImage.show', compact('post_data'));
+        $comment_list = $this->Comment->fetchCommentList();
+        //dd($comment_list);
+        return view('PostImage.show', compact('post_data', 'comment_list'));
     }
 
     /**
